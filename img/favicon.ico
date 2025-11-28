@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">Purple Cloud</title>
+  <desc id="desc">Ассиметричное фиолетовое облако с деталями и плавной анимацией.</desc>
+  <defs>
+    <linearGradient id="gradMain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9b5bff"/>
+      <stop offset="100%" stop-color="#4a0e9a"/>
+    </linearGradient>
+    <radialGradient id="gradHighlight" cx="50%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style type="text/css"><![CDATA[
+      .cloud{
+        fill:url(#gradMain);
+        filter:url(#glow);
+        animation:float 4s ease-in-out infinite;
+      }
+      .highlight{
+        fill:url(#gradHighlight);
+        pointer-events:none;
+      }
+      .spark{
+        fill:#ffffff;
+        opacity:0.3;
+        animation:spark 2s linear infinite;
+      }
+      .bar{
+        fill:#ffffff;
+        opacity:0.2;
+      }
+      @keyframes float{
+        0%   {transform:translateY(0) scale(1);}
+        50%  {transform:translateY(-12px) scale(1.03);}
+        100% {transform:translateY(0) scale(1);}
+      }
+      @keyframes spark{
+        0%   {opacity:0.2; transform:scale(0.8);}
+        50%  {opacity:0.5; transform:scale(1.2);}
+        100% {opacity:0.2; transform:scale(0.8);}
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Основная форма облака -->
+  <path class="cloud" d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10 c45,-20 85,30 60,70 q-10,15 -30,15 h-115 c-20,0 -25,-20 -25,-25 z"/>
+
+  <!-- Световой блик -->
+  <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
+
+  <!-- Маленькие искрящиеся точки -->
+  <circle class="spark" cx="70" cy="130" r="2"/>
+  <circle class="spark" cx="110" cy="115" r="2"/>
+  <circle class="spark" cx="150" cy="140" r="2"/>
+  <circle class="spark" cx="120" cy="160" r="2"/>
+
+  <!-- Объёмные полоски – намёк на данные/технологию -->
+  <rect class="bar" x="100" y="120" width="3" height="20" rx="1"/>
+  <rect class="bar" x="115" y="115" width="3" height="25" rx="1"/>
+  <rect class="bar" x="130" y="125" width="3" height="15" rx="1"/>
+</svg>
