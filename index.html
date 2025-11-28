@@ -1,150 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Tton Cloud - online hubs</title>
+<meta charset="UTF-8">
+<title>Тton – неоновый логотип</title>
 
-    <meta name="description"
-          content="Tton‑Cloud – a single page with links to my GitHub, Telegram, Steam and other profiles. One click, the right platform.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Фавикон -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/115378942?s=200">
+<style>
+  body{
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    margin:0;
+  }
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-          rel="stylesheet">
+  @keyframes pulse{
+    0%   {filter: drop-shadow(0 0 6px #D400FF) drop-shadow(0 0 12px #D400FF);}
+    50%  {filter: drop-shadow(0 0 12px #D400FF) drop-shadow(0 0 20px #5B0E9A);}
+    100% {filter: drop-shadow(0 0 6px #D400FF) drop-shadow(0 0 12px #D400FF);}
+  }
 
-    <script src="https://kit.fontawesome.com/0c6f8228e2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons.css"/>
-
-    <style>
-        :root {
-            --bg-color: #0e1117;
-            --card-bg: #1a1e27;
-            --accent: #00c8ff;
-            --text: #e0e5eb;
-            --radius: 12px;
-            --gap: 1.5rem;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--bg-color);
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: var(--gap);
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 2rem;
-            max-width: 380px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0,0,0,.4);
-        }
-
-        .logo   { margin-bottom: .5rem; }
-        .subtitle { font-size: 1rem; opacity: .8; margin-bottom: 2rem; }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: var(--gap);
-            margin-top: 1rem;
-        }
-        .link {
-            display: flex;
-            align-items: center;
-            gap: .8rem;
-            background: var(--bg-color);
-            border-radius: var(--radius);
-            padding: .8rem 1rem;
-            transition: background .2s, transform .2s;
-        }
-        .link:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-        .link i { font-size: 1.4rem; width: 1.6rem; }
-        .link span { font-weight: 500; flex-grow: 1; text-align: left; }
-
-        @media (max-width: 420px) {
-            .card { padding: 1.5rem; }
-        }
-    </style>
+  #tton-logo{
+    animation:pulse 3s infinite ease-in-out;
+    transition:transform .3s;
+  }
+  #tton-logo:hover{
+    transform:scale(1.08);
+  }
+</style>
 </head>
 
 <body>
-    <section class="card">
 
-        <div class="logo">
-            <svg width="120" height="120" viewBox="0 0 240 240"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img"
-                 aria-labelledby="title desc">
-                <title id="title">Purple Cloud</title>
-                <desc id="desc">Asymmetrical purple cloud with subtle floating animation.</desc>
-                <defs>
-                    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#9b5bff"/>
-                        <stop offset="100%" stop-color="#4a0e9a"/>
-                    </linearGradient>
-                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-                        <feMerge>
-                            <feMergeNode in="blur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                    <style type="text/css"><![CDATA[
-                        .cloud{
-                            fill:url(#cloudGrad);
-                            filter:url(#glow);
-                            animation:float 4s ease-in-out infinite;
-                            transform-origin:50% 50%;
-                        }
-                        @keyframes float{
-                            0%   {transform:translateY(0px) scale(1);}
-                            50%  {transform:translateY(-10px) scale(1.02);}
-                            100% {transform:translateY(0px) scale(1);}
-                        }
-                    ]]></style>
-                </defs>
-                <path class="cloud"
-                      d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10 c45,-20 85,30 60,70 q-10,15 -30,15 h-115 c-20,0 -25,-20 -25,-25 z"/>
-            </svg>
-        </div>
+<svg id="tton-logo"
+     width="200" height="200"
+     viewBox="0 0 200 200"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">Логотип Tton</title>
+  <desc id="desc">Неоновая буква T в чёрно‑фиолетовом градиенте с эффектом свечения</desc>
+  <defs>
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#D400FF"/>
+      <stop offset="100%" stop-color="#5B0E9A"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="outline" x="-50%" y="-50%" width="200%" height="200%">
+      <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="1"/>
+      <feFlood flood-color="#000000" flood-opacity="0.9"/>
+      <feComposite in2="DILATED" operator="in"/>
+      <feComposite in="SourceGraphic" operator="over"/>
+    </filter>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+      .t-font{font-family:'Orbitron',Arial,Helvetica,sans-serif;font-weight:900;}
+    ]]></style>
+  </defs>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        class="t-font" font-size="140"
+        fill="url(#neonGrad)"
+        filter="url(#outline) url(#glow)">
+    T
+  </text>
+</svg>
 
-        <p class="subtitle">all my worlds in one place</p>
-
-        <div class="links">
-            <a class="link" href="https://github.com/Tton69" target="_blank" rel="noopener">
-                <i class="si si-github"></i>
-                <span>GitHub</span>
-                <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-
-            <a class="link" href="https://t.me/Tton699" target="_blank" rel="noopener">
-                <i class="si si-telegram"></i>
-                <span>Telegram</span>
-                <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-
-            <a class="link" href="https://steamcommunity.com/profiles/76561199824818652/" target="_blank"
-               rel="noopener">
-                <i class="si si-steam"></i>
-                <span>Steam</span>
-                <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-    </section>
 </body>
 </html>
+
