@@ -2,115 +2,142 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Tton Cloud – Минималистичный логотип</title>
+    <title>Tton Cloud – соц‑сети</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Стиль страницы – центрируем контент, задаём фон -->
     <style>
+        /* ---------- Общие стили ---------- */
         html,body{
-            height:100%;
             margin:0;
-            background:#121212;               /* тёмный фон, как в примере Rendix Space */
+            padding:0;
+            height:100%;
+            font-family:Arial,Helvetica,sans-serif;
+            background:#111;                /* почти чёрный фон */
+            color:#eee;
             display:flex;
+            flex-direction:column;
             align-items:center;
             justify-content:center;
-            font-family:Arial,Helvetica,sans-serif;
-            color:#eee;
-        }
-        .logo-wrapper{
-            width:240px;                     /* ширина SVG‑контейнера */
-            height:auto;
             text-align:center;
         }
-        .logo-caption{
-            margin-top:1rem;
+
+        a{
+            color:#9b5bff;
+            text-decoration:none;
             font-size:1.2rem;
-            letter-spacing:0.05em;
+            margin:0.3rem 0;
+            display:inline-block;
+            transition:color .2s;
+        }
+        a:hover{
+            color:#cfa6ff;
+        }
+
+        .logo{
+            width:240px;
+            height:auto;
+            margin-bottom:1.5rem;
+        }
+        .links{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+
+        footer{
+            margin-top:2rem;
+            font-size:0.85rem;
+            color:#777;
         }
     </style>
 </head>
 <body>
 
-<div class="logo-wrapper">
-    <!-- ==== START OF SVG LOGO ==== -->
-    <svg width="240" height="240" viewBox="0 0 240 240"
-         xmlns="http://www.w3.org/2000/svg"
-         role="img"
-         aria-labelledby="title desc">
-      <title id="title">Purple Cloud</title>
-      <desc id="desc">Ассиметричное фиолетовое облако с деталями и плавной анимацией.</desc>
-      <defs>
-        <linearGradient id="gradMain" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#9b5bff"/>
-          <stop offset="100%" stop-color="#4a0e9a"/>
-        </linearGradient>
-        <radialGradient id="gradHighlight" cx="50%" cy="35%" r="50%">
-          <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
-          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-        </radialGradient>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-        <style type="text/css"><![CDATA[
-          .cloud{
-            fill:url(#gradMain);
-            filter:url(#glow);
-            animation:float 4s ease-in-out infinite;
-          }
-          .highlight{
-            fill:url(#gradHighlight);
-            pointer-events:none;
-          }
-          .spark{
-            fill:#ffffff;
-            opacity:0.3;
-            animation:spark 2s linear infinite;
-          }
-          .bar{
-            fill:#ffffff;
-            opacity:0.2;
-          }
-          @keyframes float{
-            0%   {transform:translateY(0) scale(1);}
-            50%  {transform:translateY(-12px) scale(1.03);}
-            100% {transform:translateY(0) scale(1);}
-          }
-          @keyframes spark{
-            0%   {opacity:0.2; transform:scale(0.8);}
-            50%  {opacity:0.5; transform:scale(1.2);}
-            100% {opacity:0.2; transform:scale(0.8);}
-          }
-        ]]></style>
-      </defs>
+    <!-- ==================== LOGO ==================== -->
+    <div class="logo">
+        <svg width="240" height="240" viewBox="0 0 240 240"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-labelledby="logoTitle logoDesc">
+            <title id="logoTitle">Purple Cloud</title>
+            <desc id="logoDesc">Ассиметричное фиолетовое облако с небольшими деталями и анимацией.</desc>
+            <defs>
+                <linearGradient id="gradMain" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#9b5bff"/>
+                    <stop offset="100%" stop-color="#4a0e9a"/>
+                </linearGradient>
+                <radialGradient id="gradHighlight" cx="50%" cy="35%" r="50%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+                    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                </radialGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                <style type="text/css"><![CDATA[
+                    .cloud{
+                        fill:url(#gradMain);
+                        filter:url(#glow);
+                        animation:float 4s ease-in-out infinite;
+                    }
+                    .highlight{
+                        fill:url(#gradHighlight);
+                        pointer-events:none;
+                    }
+                    .spark{
+                        fill:#fff;
+                        opacity:.3;
+                        animation:spark 2s linear infinite;
+                    }
+                    @keyframes float{
+                        0%   {transform:translateY(0) scale(1);}
+                        50%  {transform:translateY(-12px) scale(1.03);}
+                        100% {transform:translateY(0) scale(1);}
+                    }
+                    @keyframes spark{
+                        0%   {opacity:.2; transform:scale(.8);}
+                        50%  {opacity:.5; transform:scale(1.2);}
+                        100% {opacity:.2; transform:scale(.8);}
+                    }
+                ]]></style>
+            </defs>
 
-      <!-- Основная форма облака -->
-      <path class="cloud"
-            d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10
-               c45,-20 85,30 60,70 q-10,15 -30,15 h-115
-               c-20,0 -25,-20 -25,-25 z"/>
+            <!-- Облако -->
+            <path class="cloud"
+                  d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10
+                     c45,-20 85,30 60,70 q-10,15 -30,15 h-115
+                     c-20,0 -25,-20 -25,-25 z"/>
 
-      <!-- Световой блик -->
-      <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
+            <!-- Блик -->
+            <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
 
-      <!-- Маленькие искрящиеся точки -->
-      <circle class="spark" cx="70"  cy="130" r="2"/>
-      <circle class="spark" cx="110" cy="115" r="2"/>
-      <circle class="spark" cx="150" cy="140" r="2"/>
-      <circle class="spark" cx="120" cy="160" r="2"/>
+            <!-- Искры -->
+            <circle class="spark" cx="70"  cy="130" r="2"/>
+            <circle class="spark" cx="110" cy="115" r="2"/>
+            <circle class="spark" cx="150" cy="140" r="2"/>
+            <circle class="spark" cx="120" cy="160" r="2"/>
+        </svg>
+    </div>
 
-      <!-- Объёмные полоски – намёк на данные/технологию -->
-      <rect class="bar" x="100" y="120" width="3" height="20" rx="1"/>
-      <rect class="bar" x="115" y="115" width="3" height="25" rx="1"/>
-      <rect class="bar" x="130" y="125" width="3" height="15" rx="1"/>
-    </svg>
-    <!-- ==== END OF SVG LOGO ==== -->
+    <!-- ==================== ССЫЛКИ ==================== -->
+    <nav class="links">
+        <a href="https://steamcommunity.com/profiles/76561199824818652/" target="_blank" rel="noopener">
+            Steam — профиль
+        </a>
+        <a href="https://t.me/Tton699" target="_blank" rel="noopener">
+            Telegram — @Tton699
+        </a>
+        <a href="https://github.com/Tton69" target="_blank" rel="noopener">
+            GitHub — Tton69
+        </a>
+    </nav>
 
-    <div class="logo-caption">Tton Cloud</div>
-</div>
+    <footer>
+        © 2025 Tton Cloud. All rights reserved.
+    </footer>
 
 </body>
 </html>
