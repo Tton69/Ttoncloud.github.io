@@ -69,14 +69,13 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
   position:fixed;
   top:0; bottom:0;
   width:120px;
-  pointer-events:none;          /* клики проходят сквозь */
+  pointer-events:none;
   overflow:hidden;
-  z-index:0;                    /* под основным контентом */
+  z-index:0;
 }
 .side‑panel.left  {left:0;}
 .side‑panel.right {right:0;}
 
-/* плавающие фиолетовые частицы */
 .particle{
   position:absolute;
   border-radius:50%;
@@ -173,30 +172,24 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
     <path id="drop" class="rain" d="M0 0 L0 8"/>
   </defs>
 
-  <!-- Внутренний слой -->
   <path class="inner"
         d="M35,140 c-12,-30 10,-70 55,-55 a20,20 0 0 1 30,-8 c35,-15 70,20 55,55 q-8,12 -25,12 h-90 c-15,0 -20,-12 -20,-12z"/>
 
-  <!-- Основное облако -->
   <path class="cloud"
         d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10 c45,-20 85,30 60,70 q-10,15 -30,15 h-115 c-20,0 -25,-20 -25,-25z"/>
 
-  <!-- Блик -->
   <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
 
-  <!-- Звёздочки -->
   <use href="#star" x="55"  y="115"/>
   <use href="#star" x="130" y="130"/>
   <use href="#star" x="180" y="100"/>
   <use href="#star" x="95"  y="150"/>
   <use href="#star" x="150" y="70"/>
 
-  <!-- Дождик -->
   <use href="#drop" x="80"  y="160" transform="rotate(10 80 160)"/>
   <use href="#drop" x="115" y="165" transform="rotate(-8 115 165)"/>
   <use href="#drop" x="140" y="158" transform="rotate(5 140 158)"/>
 
-  <!-- Яркие искры -->
   <circle class="spark" cx="70"  cy="130" r="2"/>
   <circle class="spark" cx="110" cy="115" r="2"/>
   <circle class="spark" cx="150" cy="140" r="2"/>
@@ -205,11 +198,11 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
 </div>
 
 <nav class="links">
-  <!-- ==== Steam (обновлённый SVG‑логотип) ==== -->
+  <!-- ==== Steam (корректный SVG) ==== -->
   <a class="btn" href="https://steamcommunity.com/profiles/76561199824818652/" target="_blank" rel="noopener">
-    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="steamTitle">
+    <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="steamTitle">
       <title id="steamTitle">Steam</title>
-      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.07 3.29 9.37 7.86 10.89.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.71.08-.71 1.18.08 1.8 1.22 1.8 1.22 1.04 1.78 2.73 1.27 3.4.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.64 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.51.11-3.14 0 0 .98-.31 3.22 1.17a11.22 11.22 0 012.94-.39c.99.01 2 .13 2.94.39 2.24-1.48 3.22-1.17 3.22-1.17.63 1.63.23 2.84.11 3.14.75.8 1.2 1.82 1.2 3.07 0 4.38-2.69 5.35-5.25 5.63.41.35.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.68.8.56C20.71 21.37 24 17.07 24 12c0-6.27-5.23-11.5-12-11.5z"/>
+      <path d="M256 0C114.62 0 0 114.62 0 256s114.62 256 256 256 256-114.62 256-256S397.38 0 256 0zm0 472c-119.4 0-216-96.6-216-216S136.6 40 256 40s216 96.6 216 216-96.6 216-216 216zm91.69-141.45c-8.02 5.85-18.72 3.39-24.58-4.63l-31.45-43.23c-5.86-8.02-3.4-18.71 4.62-24.57 8.02-5.86 18.71-3.39 24.58 4.63l31.45 43.23c5.86 8.02 3.4 18.71-4.62 24.57zM232.94 218.44c-9.34 0-16.92-7.57-16.92-16.92 0-9.34 7.58-16.92 16.92-16.92 9.34 0 16.92 7.58 16.92 16.92s-7.58 16.92-16.92 16.92z"/>
     </svg>
     Steam
   </a>
