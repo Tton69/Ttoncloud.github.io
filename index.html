@@ -9,28 +9,59 @@
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 <style>
+/* ==================== БАЗОВЫЕ СТИЛИ ==================== */
 html,body{
   margin:0;padding:0;height:100%;
   font-family:Arial,Helvetica,sans-serif;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
-  background:#111;
-  background:linear-gradient(225deg,#111 0%,#1a0c2c 40%,#0e0349 60%,#111 100%);
-  background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
+  background:#111;                         /* базовый тёмный цвет */
+  overflow:hidden;                         /* скрыть скролл‑полосы, когда фон анимируется */
 }
+
+/* -------------------- АНИМИРОВАННЫЙ ФОН С КРЕСТАМИ -------------------- */
+body::before{
+  content:"";
+  position:fixed; inset:0;               /* покрыть весь экран */
+  pointer-events:none;                   /* не мешать кликам */
+  background:
+    /* 1‑й набор крестов (45°) */
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,.04) 0,
+      rgba(255,255,255,.04) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    /* 2‑й набор крестов (‑45°) */
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.04) 0,
+      rgba(255,255,255,.04) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  opacity:0.8;                           /* чуть прозрачнее, чтобы не «засорять» контент */
+  filter:blur(3px);                      /* «замыленный» вид */
+  animation:bgMove 30s linear infinite;  /* медленно перемещаем фон */
+}
+
+/* -------------------- АНИМАЦИЯ ПЕРЕМЕЩЕНИЯ ФОНА -------------------- */
 @keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0%   {background-position:0 0,   0 0;}
+  50%  {background-position:200% 0, 200% 0;}
+  100% {background-position:0 0,   0 0;}
 }
+
+/* -------------------- ОСТАЛЬНЫЕ СТИЛИ (не изменены) -------------------- */
 h1{
   color:#fff;
   font-size:1.8rem;
   margin:0 0 0.4rem 0;
   letter-spacing:0.02em;
+  z-index:1;               /* поверх фоновых элементов */
 }
-.logo{width:240px;height:auto;margin:0.5rem 0 1rem 0}
+.logo{width:240px;height:auto;margin:0.5rem 0 1rem 0;z-index:1}
 .links{
   display:flex;
   flex-direction:column;
@@ -38,6 +69,7 @@ h1{
   align-items:center;
   width:100%;
   max-width:320px;
+  z-index:1;
 }
 .btn{
   display:inline-flex;
@@ -57,7 +89,7 @@ svg.icon{
   height:1.2em;
   fill:currentColor;
 }
-footer{margin-top:2rem;font-size:0.85rem;color:#777}
+footer{margin-top:2rem;font-size:0.85rem;color:#777;z-index:1}
 </style>
 </head>
 <body>
@@ -101,16 +133,15 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
 </div>
 
 <nav class="links">
-  <!-- STEAM (fixed) -->
+  <!-- STEAM -->
   <a class="btn" href="https://steamcommunity.com/profiles/76561199824818652/" target="_blank" rel="noopener">
     <svg class="icon" viewBox="0 0 512 512">
-      <!-- официальная стилизованная версия логотипа Steam (круг + «S») -->
       <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm105 331c-15 11-33 15-51 13l-96-55c-5-3-5-10 0-13l96-55c18-2 36 2 51 13 31 23 39 68 16 99zm-89-76c-23 0-42 19-42 42s19 42 42 42 42-19 42-42-19-42-42-42z"/>
     </svg>
     Steam
   </a>
 
-  <!-- TELEGRAM (already fixed) -->
+  <!-- TELEGRAM -->
   <a class="btn" href="https://t.me/Tton699" target="_blank" rel="noopener">
     <svg class="icon" viewBox="0 0 240 240">
       <path d="M120 0C53.73 0 0 53.73 0 120s53.73 120 120 120 120-53.73 120-120S186.27 0 120 0zm56.94 86.39l-15.61 73.91c-1.16 5.42-4.2 6.77-8.51 4.22l-23.55-17.3-11.36 10.95c-1.25 1.25-2.3 2.3-4.7 2.3l1.66-24.87 45.27-40.92c1.97-1.66-.44-2.59-3.05-.99l-55.93 35.25-24.06-7.51c-5.23-1.62-5.34-5.23 1.11-7.73l94.18-36.36c4.35-1.62 8.15 1.07 6.75 7.49z"/>
