@@ -15,57 +15,80 @@ html,body{
   font-family:Arial,Helvetica,sans-serif;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
-  background:#111;                         /* базовый тёмный цвет */
-  overflow:hidden;                         /* скрыть скролл‑полосы, когда фон анимируется */
+  background:#111;                     /* тёмный базовый цвет */
+  overflow:hidden;                     /* скрыть скролл‑полосы, когда фон двигается */
+  position:relative;                   /* нужен для псевдо‑элементов */
 }
 
 /* -------------------- АНИМИРОВАННЫЙ ФОН С КРЕСТАМИ -------------------- */
 body::before{
   content:"";
-  position:fixed; inset:0;               /* покрыть весь экран */
-  pointer-events:none;                   /* не мешать кликам */
+  position:fixed; inset:0;             /* покрыть весь экран */
+  pointer-events:none;
+  /* два набора крестов (45° и -45°) в фиолетовом полупрозрачном цвете   */
   background:
-    /* 1‑й набор крестов (45°) */
     repeating-linear-gradient(
       45deg,
-      rgba(255,255,255,.04) 0,
-      rgba(255,255,255,.04) 1px,
+      rgba(155,91,255,.12) 0,
+      rgba(155,91,255,.12) 1px,
       transparent 1px,
-      transparent 20px
+      transparent 18px
     ),
-    /* 2‑й набор крестов (‑45°) */
     repeating-linear-gradient(
       -45deg,
-      rgba(255,255,255,.04) 0,
-      rgba(255,255,255,.04) 1px,
+      rgba(155,91,255,.12) 0,
+      rgba(155,91,255,.12) 1px,
       transparent 1px,
-      transparent 20px
+      transparent 18px
     );
-  opacity:0.8;                           /* чуть прозрачнее, чтобы не «засорять» контент */
-  filter:blur(3px);                      /* «замыленный» вид */
-  animation:bgMove 30s linear infinite;  /* медленно перемещаем фон */
+  opacity:0.9;
+  filter:blur(3px) hue-rotate(0deg);   /* небольшое размытие + цветовой сдвиг */
+  animation:crossesMove 30s linear infinite,
+             hueShift      12s linear infinite;
 }
 
-/* -------------------- АНИМАЦИЯ ПЕРЕМЕЩЕНИЯ ФОНА -------------------- */
-@keyframes bgMove{
+/* анимация перемещения крестов (по горизонтали‑вертикали) */
+@keyframes crossesMove{
   0%   {background-position:0 0,   0 0;}
-  50%  {background-position:200% 0, 200% 0;}
+  50%  {background-position:200% 0,200% 0;}
   100% {background-position:0 0,   0 0;}
 }
 
-/* -------------------- ОСТАЛЬНЫЕ СТИЛИ (не изменены) -------------------- */
+/* плавный перелив фиолетового: меняем hue‑rotate от 0° до 360° */
+@keyframes hueShift{
+  0%   {filter:blur(3px) hue-rotate(0deg);}
+  50%  {filter:blur(3px) hue-rotate(180deg);}
+  100% {filter:blur(3px) hue-rotate(360deg);}
+}
+
+/* -------------------- ЦЕНТРАЛЬНАЯ ПОЛОСА -------------------- */
+body::after{
+  content:"";
+  position:fixed;
+  top:0; bottom:0;
+  left:50%;                    /* центрировать */
+  width:4px;                   /* толщина полосы */
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,
+    #9b5bff 0%,
+    #4a0e9a 100%);
+  opacity:0.85;
+  pointer-events:none;
+}
+
+/* -------------------- СТИЛИ КОНТЕНТА (не изменены) -------------------- */
 h1{
   color:#fff;
   font-size:1.8rem;
-  margin:0 0 0.4rem 0;
+  margin:0 0 .4rem 0;
   letter-spacing:0.02em;
-  z-index:1;               /* поверх фоновых элементов */
+  z-index:1;
 }
-.logo{width:240px;height:auto;margin:0.5rem 0 1rem 0;z-index:1}
+.logo{width:240px;height:auto;margin:.5rem 0 1rem 0;z-index:1}
 .links{
   display:flex;
   flex-direction:column;
-  gap:0.8rem;
+  gap:.8rem;
   align-items:center;
   width:100%;
   max-width:320px;
@@ -74,9 +97,9 @@ h1{
 .btn{
   display:inline-flex;
   align-items:center;
-  gap:0.5rem;
-  padding:0.6rem 1rem;
-  border-radius:0.9rem;
+  gap:.5rem;
+  padding:.6rem 1rem;
+  border-radius:.9rem;
   background:#222;
   color:#9b5bff;
   text-decoration:none;
@@ -89,7 +112,7 @@ svg.icon{
   height:1.2em;
   fill:currentColor;
 }
-footer{margin-top:2rem;font-size:0.85rem;color:#777;z-index:1}
+footer{margin-top:2rem;font-size:.85rem;color:#777;z-index:1}
 </style>
 </head>
 <body>
