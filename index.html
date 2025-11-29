@@ -63,6 +63,32 @@ svg.icon{
 footer{margin-top:2rem;font-size:0.85rem;color:#777}
 
 /* -------------------------------------------------
+   Боковые декоративные частицы
+   ------------------------------------------------- */
+.side‑panel{
+  position:fixed;
+  top:0; bottom:0;
+  width:120px;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+.side‑panel.left  {left:0;}
+.side‑panel.right {right:0;}
+
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(155,91,255,0.3);
+  animation:floatParticle 12s linear infinite;
+}
+@keyframes floatParticle{
+  0%   {transform:translateY(100vh) scale(0.8);}
+  50%  {transform:translateY(0)      scale(1.2);}
+  100% {transform:translateY(-100vh)scale(0.8);}
+}
+
+/* -------------------------------------------------
    SVG‑анимации логотипа
    ------------------------------------------------- */
 .cloud{fill:url(#gradMain);filter:url(#glow);animation:float 4s ease-in-out infinite}
@@ -83,6 +109,27 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
 </style>
 </head>
 <body>
+
+<!-- ---------- Боковые панели с «частицами» ---------- -->
+<div class="side‑panel left">
+  <div class="particle" style="width:8px;height:8px;left:20%;top:10%;animation-duration:10s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:35%;top:30%;animation-duration:14s;"></div>
+  <div class="particle" style="width:10px;height:10px;left:10%;top:55%;animation-duration:12s;"></div>
+  <div class="particle" style="width:5px;height:5px;left:70%;top:70%;animation-duration:16s;"></div>
+  <div class="particle" style="width:9px;height:9px;left:50%;top:85%;animation-duration:11s;"></div>
+  <div class="particle" style="width:7px;height:7px;left:25%;top:40%;animation-duration:13s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:80%;top:20%;animation-duration:15s;"></div>
+</div>
+
+<div class="side‑panel right">
+  <div class="particle" style="width:8px;height:8px;right:20%;top:15%;animation-duration:11s;"></div>
+  <div class="particle" style="width:5px;height:5px;right:30%;top:35%;animation-duration:13s;"></div>
+  <div class="particle" style="width:9px;height:9px;right:15%;top:60%;animation-duration:12s;"></div>
+  <div class="particle" style="width:6px;height:6px;right:65%;top:75%;animation-duration:14s;"></div>
+  <div class="particle" style="width:10px;height:10px;right:45%;top:88%;animation-duration:10s;"></div>
+  <div class="particle" style="width:7px;height:7px;right:25%;top:45%;animation-duration:16s;"></div>
+  <div class="particle" style="width:5px;height:5px;right:75%;top:25%;animation-duration:15s;"></div>
+</div>
 
 <h1>All worlds in one page</h1>
 
@@ -117,15 +164,9 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
       <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-
-    <!-- Декоративные звёздочки -->
-    <circle id="star" class="spark" cx="0" cy="0" r="2"/>
-
-    <!-- Капли‑дождик -->
-    <path id="drop" class="rain" d="M0 0 L0 8"/>
   </defs>
 
-  <!-- Внутренний слой -->
+  <!-- Внутренний слой (полупрозрачный) -->
   <path class="inner"
         d="M35,140 c-12,-30 10,-70 55,-55 a20,20 0 0 1 30,-8 c35,-15 70,20 55,55 q-8,12 -25,12 h-90 c-15,0 -20,-12 -20,-12z"/>
 
@@ -133,26 +174,8 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
   <path class="cloud"
         d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10 c45,-20 85,30 60,70 q-10,15 -30,15 h-115 c-20,0 -25,-20 -25,-25z"/>
 
-  <!-- Блик -->
+  <!-- Световой блик -->
   <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
-
-  <!-- Звёздочки -->
-  <use href="#star" x="55"  y="115"/>
-  <use href="#star" x="130" y="130"/>
-  <use href="#star" x="180" y="100"/>
-  <use href="#star" x="95"  y="150"/>
-  <use href="#star" x="150" y="70"/>
-
-  <!-- Дождик -->
-  <use href="#drop" x="80"  y="160" transform="rotate(10 80 160)"/>
-  <use href="#drop" x="115" y="165" transform="rotate(-8 115 165)"/>
-  <use href="#drop" x="140" y="158" transform="rotate(5 140 158)"/>
-
-  <!-- Яркие искры -->
-  <circle class="spark" cx="70"  cy="130" r="2"/>
-  <circle class="spark" cx="110" cy="115" r="2"/>
-  <circle class="spark" cx="150" cy="140" r="2"/>
-  <circle class="spark" cx="120" cy="160" r="2"/>
 </svg>
 </div>
 
