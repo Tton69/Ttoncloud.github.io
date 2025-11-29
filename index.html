@@ -9,7 +9,9 @@
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 <style>
-/* ---------- Общие стили ---------- */
+/* -------------------------------------------------
+   Общие стили страницы
+   ------------------------------------------------- */
 html,body{
   margin:0;padding:0;height:100%;
   font-family:Arial,Helvetica,sans-serif;
@@ -60,7 +62,49 @@ svg.icon{
 }
 footer{margin-top:2rem;font-size:0.85rem;color:#777}
 
-/* ---------- SVG‑анимации ---------- */
+/* -------------------------------------------------
+   Декоративные боковые детали
+   ------------------------------------------------- */
+.side‑panel{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:120px;
+  pointer-events:none;          /* клики проходят сквозь */
+  overflow:hidden;
+  z-index:0;                    /* под основным контентом */
+}
+.side‑panel.left  {left:0;}
+.side‑panel.right {right:0;}
+
+/* анимированные «частицы» – небольшие точки, которые медленно плавают */
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(155,91,255,0.3);   /* лёгкий фиолетовый */
+  animation:floatParticle 12s linear infinite;
+}
+@keyframes floatParticle{
+  0%   {transform:translateY(100vh) scale(0.8);}
+  50%  {transform:translateY(0)      scale(1.2);}
+  100% {transform:translateY(-100vh)scale(0.8);}
+}
+
+/* небольшой «мост» – полупрозрачная линия, соединяющая левый и правый края */
+.bridge{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:90vw;
+  height:2px;
+  background:rgba(66,33,150,0.4);
+  transform:translateX(-50%);
+  border-radius:1px;
+}
+
+/* -------------------------------------------------
+   SVG‑анимации логотипа
+   ------------------------------------------------- */
 .cloud{fill:url(#gradMain);filter:url(#glow);animation:float 4s ease-in-out infinite}
 .inner{fill:url(#gradInner);filter:url(#glowInner);animation:float 5s ease-in-out infinite alternate}
 .highlight{fill:url(#gradHighlight);pointer-events:none}
@@ -80,6 +124,32 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
 </head>
 <body>
 
+<!-- ---------- Боковые панели с «частицами» ---------- -->
+<div class="side‑panel left">
+  <!-- 7 случайных точек слева -->
+  <div class="particle" style="width:8px;height:8px;left:20%;top:10%;animation-duration:10s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:35%;top:30%;animation-duration:14s;"></div>
+  <div class="particle" style="width:10px;height:10px;left:10%;top:55%;animation-duration:12s;"></div>
+  <div class="particle" style="width:5px;height:5px;left:70%;top:70%;animation-duration:16s;"></div>
+  <div class="particle" style="width:9px;height:9px;left:50%;top:85%;animation-duration:11s;"></div>
+  <div class="particle" style="width:7px;height:7px;left:25%;top:40%;animation-duration:13s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:80%;top:20%;animation-duration:15s;"></div>
+</div>
+
+<div class="side‑panel right">
+  <!-- 7 случайных точек справа -->
+  <div class="particle" style="width:8px;height:8px;right:20%;top:15%;animation-duration:11s;"></div>
+  <div class="particle" style="width:5px;height:5px;right:30%;top:35%;animation-duration:13s;"></div>
+  <div class="particle" style="width:9px;height:9px;right:15%;top:60%;animation-duration:12s;"></div>
+  <div class="particle" style="width:6px;height:6px;right:65%;top:75%;animation-duration:14s;"></div>
+  <div class="particle" style="width:10px;height:10px;right:45%;top:88%;animation-duration:10s;"></div>
+  <div class="particle" style="width:7px;height:7px;right:25%;top:45%;animation-duration:16s;"></div>
+  <div class="particle" style="width:5px;height:5px;right:75%;top:25%;animation-duration:15s;"></div>
+
+  <!-- Центр‑мост (перекрёсток) -->
+  <div class="bridge"></div>
+</div>
+
 <h1>All worlds in one page</h1>
 
 <div class="logo">
@@ -87,28 +157,24 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
      xmlns="http://www.w3.org/2000/svg" role="img"
      aria-labelledby="logoTitle logoDesc">
   <title id="logoTitle">Purple Cloud</title>
-  <desc id="logoDesc">Ассиметричное фиолетовое облако с детальными элементами и анимацией.</desc>
+  <desc id="logoDesc">Ассиметричное фиолетовое облако с деталями и анимацией.</desc>
 
   <defs>
-    <!-- Основной градиент облака -->
+    <!-- Градиенты -->
     <linearGradient id="gradMain" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%"  stop-color="#9b5bff"/>
       <stop offset="100%" stop-color="#4a0e9a"/>
     </linearGradient>
-
-    <!-- Внутренний более светлый слой -->
     <linearGradient id="gradInner" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%"   stop-color="rgba(255,255,255,0.4)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </linearGradient>
-
-    <!-- Блик/свет в центре -->
     <radialGradient id="gradHighlight" cx="50%" cy="35%" r="50%">
       <stop offset="0%"   stop-color="rgba(255,255,255,0.5)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
 
-    <!-- Фильтры свечения -->
+    <!-- Фильтры -->
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -118,42 +184,37 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
 
-    <!-- Декоративные «звёздочки» -->
+    <!-- Декоративные звёздочки -->
     <circle id="star" class="spark" cx="0" cy="0" r="2"/>
 
-    <!-- Капля‑дождик (стилизованный) -->
+    <!-- Капли‑дождик -->
     <path id="drop" class="rain" d="M0 0 L0 8"/>
   </defs>
 
-  <!-- Внутренний пушистый слой (чуть меньше, чуть выше) -->
+  <!-- Внутренний слой -->
   <path class="inner"
-        d="M35,140
-           c-12,-30 10,-70 55,-55 a20,20 0 0 1 30,-8
-           c35,-15 70,20 55,55 q-8,12 -25,12 h-90 c-15,0 -20,-12 -20,-12z"/>
+        d="M35,140 c-12,-30 10,-70 55,-55 a20,20 0 0 1 30,-8 c35,-15 70,20 55,55 q-8,12 -25,12 h-90 c-15,0 -20,-12 -20,-12z"/>
 
   <!-- Основное облако -->
   <path class="cloud"
-        d="M30,150
-           c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10
-           c45,-20 85,30 60,70 q-10,15 -30,15 h-115
-           c-20,0 -25,-20 -25,-25z"/>
+        d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10 c45,-20 85,30 60,70 q-10,15 -30,15 h-115 c-20,0 -25,-20 -25,-25z"/>
 
-  <!-- Светящийся центр (блик) -->
+  <!-- Блик -->
   <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
 
-  <!-- Декоративные мелкие «зверушки» (spark) -->
+  <!-- Звёздочки -->
   <use href="#star" x="55"  y="115"/>
   <use href="#star" x="130" y="130"/>
   <use href="#star" x="180" y="100"/>
   <use href="#star" x="95"  y="150"/>
   <use href="#star" x="150" y="70"/>
 
-  <!-- «Дождик» в виде 3‑х коротких полосок -->
+  <!-- Дождик -->
   <use href="#drop" x="80"  y="160" transform="rotate(10 80 160)"/>
   <use href="#drop" x="115" y="165" transform="rotate(-8 115 165)"/>
   <use href="#drop" x="140" y="158" transform="rotate(5 140 158)"/>
 
-  <!-- Искры (более яркие, чуть больше) -->
+  <!-- Яркие искры -->
   <circle class="spark" cx="70"  cy="130" r="2"/>
   <circle class="spark" cx="110" cy="115" r="2"/>
   <circle class="spark" cx="150" cy="140" r="2"/>
