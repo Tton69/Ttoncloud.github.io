@@ -5,13 +5,10 @@
 <title>Tton Cloud – соц‑сети</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ★ ФАВИКОН ★ -->
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 <style>
-/* -------------------------------------------------
-   Общие стили страницы
-   ------------------------------------------------- */
+
 html,body{
   margin:0;padding:0;height:100%;
   font-family:Arial,Helvetica,sans-serif;
@@ -62,9 +59,6 @@ svg.icon{
 }
 footer{margin-top:2rem;font-size:0.85rem;color:#777}
 
-/* -------------------------------------------------
-   Боковые декоративные частицы
-   ------------------------------------------------- */
 .side‑panel{
   position:fixed;
   top:0; bottom:0;
@@ -88,9 +82,6 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
   100% {transform:translateY(-100vh)scale(0.8);}
 }
 
-/* -------------------------------------------------
-   SVG‑анимации логотипа
-   ------------------------------------------------- */
 .cloud{fill:url(#gradMain);filter:url(#glow);animation:float 4s ease-in-out infinite}
 .inner{fill:url(#gradInner);filter:url(#glowInner);animation:float 5s ease-in-out infinite alternate}
 .highlight{fill:url(#gradHighlight);pointer-events:none}
@@ -110,7 +101,6 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
 </head>
 <body>
 
-<!-- ---------- Боковые панели с «частицами» ---------- -->
 <div class="side‑panel left">
   <div class="particle" style="width:8px;height:8px;left:20%;top:10%;animation-duration:10s;"></div>
   <div class="particle" style="width:6px;height:6px;left:35%;top:30%;animation-duration:14s;"></div>
@@ -155,7 +145,6 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
 
-    <!-- Фильтры -->
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -166,21 +155,18 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
     </filter>
   </defs>
 
-  <!-- Внутренний слой (полупрозрачный) -->
   <path class="inner"
         d="M35,140 c-12,-30 10,-70 55,-55 a20,20 0 0 1 30,-8 c35,-15 70,20 55,55 q-8,12 -25,12 h-90 c-15,0 -20,-12 -20,-12z"/>
 
-  <!-- Основное облако -->
   <path class="cloud"
         d="M30,150 c-15,-35 20,-80 70,-55 a25,30 0 0 1 40,-10 c45,-20 85,30 60,70 q-10,15 -30,15 h-115 c-20,0 -25,-20 -25,-25z"/>
 
-  <!-- Световой блик -->
   <ellipse class="highlight" cx="85" cy="95" rx="70" ry="40"/>
 </svg>
 </div>
 
 <nav class="links">
-  <!-- ==== Steam (чёрно‑фиолетовый) ==== -->
+  
   <a class="btn" href="https://steamcommunity.com/profiles/76561199824818652/" target="_blank" rel="noopener">
     <svg class="icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
       <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.198 2.198 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.217 2.217 0 0 1-1.312-1.568L.33 10.333Z"/>
@@ -189,7 +175,6 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
     Steam
   </a>
 
-  <!-- ==== Telegram ==== -->
   <a class="btn" href="https://t.me/Tton699" target="_blank" rel="noopener">
     <svg class="icon" viewBox="0 0 240 240">
       <path d="M120 0C53.73 0 0 53.73 0 120s53.73 120 120 120 120-53.73 120-120S186.27 0 120 0zm56.94 86.39l-15.61 73.91c-1.16 5.42-4.2 6.77-8.51 4.22l-23.55-17.3-11.36 10.95c-1.25 1.25-2.3 2.3-4.7 2.3l1.66-24.87 45.27-40.92c1.97-1.66-.44-2.59-3.05-.99l-55.93 35.25-24.06-7.51c-5.23-1.62-5.34-5.23 1.11-7.73l94.18-36.36c4.35-1.62 8.15 1.07 6.75 7.49z"/>
@@ -197,7 +182,6 @@ footer{margin-top:2rem;font-size:0.85rem;color:#777}
     Telegram
   </a>
 
-  <!-- ==== GitHub ==== -->
   <a class="btn" href="https://github.com/Tton69" target="_blank" rel="noopener">
     <svg class="icon" viewBox="0 0 24 24">
       <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.07 3.29 9.37 7.86 10.89.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.71.08-.71 1.18.08 1.8 1.22 1.8 1.22 1.04 1.78 2.73 1.27 3.4.97.1-.76.4-1.27.73-1.56-2.55-.29-5.23-1.27-5.23-5.64 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.51.11-3.14 0 0 .98-.31 3.22 1.17a11.22 11.22 0 012.94-.39c.99.01 2 .13 2.94.39 2.24-1.48 3.22-1.17 3.22-1.17.63 1.63.23 2.84.11 3.14.75.8 1.2 1.82 1.2 3.07 0 4.38-2.69 5.35-5.25 5.63.41.35.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.68.8.56C20.71 21.37 24 17.07 24 12c0-6.27-5.23-11.5-12-11.5z"/>
